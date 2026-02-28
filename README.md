@@ -10,7 +10,7 @@
 
 ### Descripción del Proyecto
 
-**Detección de Fatiga y Somnolencia** es un sistema de detección en tiempo real que monitorea el estado de fatiga del conductor utilizando visión por computadora. El sistema analiza los ojos, la boca y la posición de la cabeza para detectar signos de somnolencia y alertar al conductor.
+**Detección de Fatiga y Somnolencia** es un sistema de detección en tiempo real que monitorea el estado de fatiga del conductor utilizando visión por computadora. El sistema analiza los ojos, la boca y la posición de la cabeza para detectar signos de somnolencia y alertar al conductor. Posese una interfaz gráfica que permite la carga y análisis de videos pre grabados, así como la exportación con los overlays de detección.
 
 ### Características
 
