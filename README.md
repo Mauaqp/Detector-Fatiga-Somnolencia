@@ -38,7 +38,7 @@ Pillow (PIL)
 1. Clonar el repositorio:
 ```bash
 git clone https://github.com/Mauaqp/Detector-Fatiga-Somnolencia.git
-cd Driver-Drowsiness-Detection
+cd Detector-Fatiga-Somnolencia
 ```
 
 2. Instalar dependencias:
@@ -141,7 +141,7 @@ Pillow (PIL)
 1. Clone the repository:
 ```bash
 git clone https://github.com/Mauaqp/Detector-Fatiga-Somnolencia.git
-cd Driver-Drowsiness-Detection
+cd Detector-Fatiga-Somnolencia
 ```
 
 2. Install dependencies:
