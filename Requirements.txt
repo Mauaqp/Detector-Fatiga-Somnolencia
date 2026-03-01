@@ -1,6 +1,22 @@
-imutils==0.5.4
-opencv-python==4.13.0.92
-dlib==19.24.1
+# Driver Drowsiness Detection - Dependencies
+# Install in this exact order to avoid conflicts
+
+# Core dependencies (install first)
+pip install --upgrade pip setuptools wheel
+
+# Build tools
+cmake==3.18.0
+
+# NumPy - CRITICAL: Must be 1.x (not 2.x) for dlib compatibility
 numpy==1.26.4
-cmake==4.2.3
-scipy==1.15.3
+
+# OpenCV
+opencv-python==4.8.0.74
+
+# dlib - Requires Visual C++ Build Tools on Windows
+dlib==19.24.1
+
+# Other dependencies
+imutils==0.5.4
+scipy==1.11.4
+Pillow
