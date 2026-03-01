@@ -1,4 +1,4 @@
-# Driver Drowsiness Detection
+# Driver Drowsiness Detection / Detección de Fatiga y Somnolencia
 
 > Sistema de detección de fatiga y somnolencia en tiempo real para conductores / Real-time driver drowsiness detection system
 
@@ -10,7 +10,7 @@
 
 ### Descripción del Proyecto
 
-**Detección de Fatiga y Somnolencia** es un sistema de detección en tiempo real que monitorea el estado de fatiga del conductor utilizando visión por computadora. El sistema analiza los ojos, la boca y la posición de la cabeza para detectar signos de somnolencia y alertar al conductor.
+**Detección de Fatiga y Somnolencia** es un sistema de detección en tiempo real que monitorea el estado de fatiga del conductor utilizando visión por computadora. El sistema analiza los ojos, la boca y la posición de la cabeza para detectar signos de somnolencia y alertar al conductor. Posese una interfaz gráfica que permite la carga y análisis de videos pre grabados, así como la exportación con los overlays de detección.
 
 ### Características
 
@@ -199,9 +199,8 @@ python -c "import numpy; print(numpy.__version__)"
 
 #### Error: "No module named 'cv2'"
 ```bash
-# Reinstall opencv
-pip uninstall opencv-python
-pip install opencv-python==4.8.0.74
+git clone https://github.com/Mauaqp/Detector-Fatiga-Somnolencia.git
+cd Driver-Drowsiness-Detection
 ```
 
 ### Installation Verification
@@ -261,7 +260,93 @@ python DrowsinessDetectorGUI.py
 4. **Cambio de Idioma**:
    - Use el menú para cambiar entre Español e Inglés
 
-### English
+### Problemas Conocidos
+
+- **NumPy 2.0**: dlib no es compatible con NumPy 2.0. Use `numpy==1.26.4`
+- **Cámaras sin conectar**: Los errores de cámara son esperados en PCs sin webcam
+
+### Estructura del Proyecto
+
+```
+Driver-Drowsiness-Detection/
+├── DrowsinessDetectorGUI.py    # Interfaz gráfica principal
+├── DriverDrowsinessDetection.py # Script original de consola
+├── EAR.py                     # Cálculo del Eye Aspect Ratio
+├── MAR.py                     # Cálculo del Mouth Aspect Ratio
+├── HeadPose.py                # Estimación de pose de cabeza
+├── Requirements.txt            # Dependencias del proyecto
+├── img/
+│   └── isologo color.png      # Logo de la aplicación
+├── dlib_shape_predictor/
+│   └── shape_predictor_68_face_landmarks.dat  # Modelo de 68 puntos
+└── README.md                  # Este archivo
+```
+
+### Algoritmo de Detección
+
+El sistema utiliza un enfoque trifuncional:
+
+1. **Eye Aspect Ratio (EAR)**: Mide la relación de aspecto de los ojos
+   - Si EAR < 0.25 durante 3 frames consecutivos → Ojos cerrados
+
+2. **Mouth Aspect Ratio (MAR)**: Mide la apertura de la boca
+   - Si MAR > 0.79 → Bostezo detectado
+
+3. **Pose de Cabeza**: Estima la inclinación de la cabeza
+   - Utiliza Perspective-n-Point (PnP) para calcular orientación 3D
+
+### Licencia
+
+MIT License
+
+---
+
+## English
+
+### Project Description
+
+**Driver Drowsiness Detection** is a real-time monitoring system that detects driver fatigue using computer vision. The system analyzes eyes, mouth, and head position to detect signs of drowsiness and alert the driver.
+
+### Features
+
+- 🔍 **Face detection** using dlib (HOG + 68 facial landmarks)
+- 👁️ **Closed eye detection** using Eye Aspect Ratio (EAR)
+- 👄 **Yawning detection** using Mouth Aspect Ratio (MAR)
+- 📐 **Head pose estimation** to detect forward tilt
+- 🎥 **Live camera and video file support**
+- 🌐 **Bilingual interface** (Spanish/English)
+- 💾 **Video export** to MP4 format
+
+### System Requirements
+
+```
+numpy==1.26.4      # Specific version required (see notes)
+opencv-python==4.13.0.92
+dlib==19.24.1
+imutils==0.5.4
+scipy==1.15.3
+Pillow (PIL)
+```
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Mauaqp/Detector-Fatiga-Somnolencia.git
+cd Driver-Drowsiness-Detection
+```
+
+2. Install dependencies:
+```bash
+pip install -r Requirements.txt
+```
+
+3. Run the application:
+```bash
+python DrowsinessDetectorGUI.py
+```
+
+### GUI Usage
 
 1. **Select Video Source**:
    - Choose a camera from the dropdown
